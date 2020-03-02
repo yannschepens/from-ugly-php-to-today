@@ -2,23 +2,137 @@
 
 == Pourquoi cette présentation ?
 
-=== "Le PHP c'est pas du vrai objet"
+=== "Le PHP c'est pas un vrai langage"
 
 * C'est pas stable
 * C'est sale
+* "Nan, mais les types ils essayent de faire de l'object"
 * Vous faites des tests en vrai ?
 * Etc.
 
+=== Image ça m'agace
+
 == L'histoire de PHP
 
-[NOTE]
-====
-On parle de l'évolution et des cas d'usage
-====
+=== 1994 : PHP/FI
+
+Création par Rasmus Lerdorf de PHP/FI (*Personal Home Page Tools*)
+
+Objectif : réutiliser du code
+
+----
+<!--include /text/header.html-->
+
+<!--getenv HTTP_USER_AGENT-->
+<!--ifsubstr $exec_result Mozilla-->
+  Hé, vous utilisez Netscape !<p>
+<!--endif-->
+
+<!--sql database select * from table where user='$username'-->
+<!--ifless $numentries 1-->
+  Désolé, cette ligne n'existe pas<p>
+<!--endif exit-->
+  Bienvenue <!--$user--> !<p>
+  Vous avez <!--$index:0--> crédits sur votre compte.<p>
+
+<!--include /text/footer.html-->
+----
+
+[.notes]
+----
+A l'orgine, c'était juste pour éviter de repeter du code, pas du tout pour être un langage de programmation.
+C'était juste un outil de type CGI, pour générer un peu de contenu, pas un langage à proprement parlé.
+
+Punchlines :
+Regardez comme c'est moche
+----
+
+=== 1996 : PHP/FI v2
+
+* Refonte complète
+* Gestion des cookies
+* Gestion de la connexion avec certaines DB
+
+* 60 000 domaines internet (source Netcraft)
+* Soit 1% du web de l'époque
+
+[.notes]
+----
+Toujours maintenu par un seul gars
+Grosse refonte mais limiter by design
+
+Punchlines :
+On peut dire qu'au moins 1% d'internet n'était très stable à l'époque
+----
+
+=== 1998 : PHP Hypertext Preprocessor, aka PHP3
+
+* Arrivé de Andi Gutmans et Zeev Suraski
+* Nouvelle refonte
+* Naissance du langage en tant que tel
+* Toujours orienté petit site web
+* 70.000 domaines
+* 10% du web
+
+[.notes]
+----
+Rien de particulier à dire ici.
+PHP continue son bout de chemin
+Pas fait pour faire de grosses applications
+
+Punchlines :
+L'instabilité d'internet est de plus en plus inquiétante
+----
+
+=== mi-1999 : PHP 4
+
+* Le fameux PHP qui fait flipper
+* Nouveau moteur "Zend Engine"
+* Amélioration des performances
+* Beaucoup de connecteurs avec des systèmes externes
+* Peu gérer des applications de plus en plus importante
+
+[.notes]
+----
+Zend : contraction de Zeev et Andi
+C'est cette version dont beaucoup de personnes se souviennent et en font encore des cauchemars
+
+Punchlines :
+On verra des exemples tout à l'heure ne vous inquietez pas, mais je demanderai aux ames sensibles de sortir avant
+----
+
+=== 2004 : PHP 5
+
+* Zend Engines 2.0
+* Arrivée de l'objet
+* Explosion de la communauté
+** PEAR/PECL
+** l'AFUP
+** Wordpress
+** Symfony
+** etc.
+* 8 millions de sites web (en 2002)
+
+=== 2016 : PHP 7
+
+* On va en parler
+
+[.notes]
+----
+PHP6 c'est gauffré, une sombre histoire d'unicode
+Je ne vais pas épiloguer
+----
 
 == Présence de PHP sur la toile
 
 * 80% d'internet
+* Wordpress = 25% d'internet
+* Taux de pénétration de 57% (source wikipedia, désolé)
+
+[.notes]
+----
+
+----
 
 == Cassons un peu les à priori
 
@@ -111,3 +225,8 @@ On a pas la mauvaise habitude de tout foutre en session
 === Simple par définition
 
 == Conclusion
+
+== Sources
+
+* https://www.jesuisundev.com/pourquoi-les-developpeurs-detestent-php/
+* https://www.php.net/manual/fr/intro-whatis.php
