@@ -1,2 +1,113 @@
 = De PHP Moche à aujourd'hui
 
+== Pourquoi cette présentation ?
+
+=== "Le PHP c'est pas du vrai objet"
+
+* C'est pas stable
+* C'est sale
+* Vous faites des tests en vrai ?
+* Etc.
+
+== L'histoire de PHP
+
+[NOTE]
+====
+On parle de l'évolution et des cas d'usage
+====
+
+== Présence de PHP sur la toile
+
+* 80% d'internet
+
+== Cassons un peu les à priori
+
+[NOTE]
+====
+On attaque la partie langage
+====
+
+== Le typage
+
+== La stabilité
+
+== Le mélange MVC/Templating
+
+== L'OOP
+
+=== Polymorphisme
+
+=== Héritage
+
+=== Encapsulation
+
+== Les éléments de langage
+
+=== Les namespaces
+
+=== L'autoloader
+
+=== Les traits
+
+=== Les annotations
+
+[NOTE]
+====
+PHP Parser
+Doctrine
+etc.
+====
+
+=== Fonction anonyme
+
+=== Les trucs qui manquent
+
+* Enum
+* Définition des getters/setters
+
+[NOTE]
+====
+Même si nos IDEs les générent
+====
+
+== La qualité de code/normes
+
+=== PSR
+
+=== PHPQA
+
+=== PHPUnit
+
+=== Codeception/Behat
+
+== L'écosystème
+
+=== Composer
+
+=== Symfony
+
+=== Doctrine
+
+=== Twig
+
+=== Api Platform
+
+=== et plein d'autres trucs
+
+== Les avantages de PHP
+
+=== Stateless par défaut
+
+[NOTE]
+====
+C'est un langage de script
+On a pas la mauvaise habitude de tout foutre en session
+====
+
+=== Build/Déploiement simple
+
+=== Accessible au débutant
+
+=== Simple par définition
+
+== Conclusion
