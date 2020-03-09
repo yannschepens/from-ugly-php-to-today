@@ -166,6 +166,8 @@ Punchlines :
 
 == Le typage
 
+Ce que vous connaissez
+
 [source,php]
 ----
 <?php
@@ -177,11 +179,12 @@ function test($toto = null) {
 
 [.notes]
 --
-* PHP 4 : Ca n'avait aucun sens
+
+* PHP 4 : le typage n'avait aucun sens
 * PHP 5 : Possible dans les paramètres et encore que des classes
 --
 
-
+=== Maintenant
 
 [source,php]
 ----
@@ -193,45 +196,211 @@ class ILovePHP
 {
     private string $myVar;
 
-    protected function test(MonInterface? $toto): void {
-        ...
+    protected function test(MonInterface? $toto): void
+    {
+        echo 'Ca change hein ?';
     }
 }
 ----
 
+* Typage fort possible et complet
+
 [.notes]
 --
 strict_types définissable dans la conf de base
-Depuis 7.4, on peut tout types
+Depuis 7.4, on peut tout typer
 On peut toujours travailler sans si on le souhaite
 Les scalaires sont supportés
 --
 
-=== Avant
-
-
-
-* Typage fort possible et complet
-
 == La stabilité
 
-== Le mélange MVC/Templating
+* PHP, c'est pas stable !
+* Ca marche mal
+* C'est lent ...
+* C'est un langage de Schrodinger
+
+[.notes]
+--
+Pour les anciens, oui, PHP, ce n'était pas stable
+--
+
+=== Les vraies raisons
+
+* display_errors : false
+* Pas de compilation
+* Langage permissif
+* Communauté vaste, pas forcement formée
+* ... comme pas mal de langage récent en fait
+
+[.notes]
+--
+On va aller vite, c'est généralement un problème de typage.
+
+Mettez n'importe quel langage dans les mains d'un débutant, vous aurez le même résultat.
+--
+
+== Le PHP dans les fichiers HTML
+
+* Le fameux .phtml
+
+[source,php]
+----
+<ul>
+    <?php foreach ($items as $item) { ?>
+        <li><?php echo $item->getName(); ?></li>
+    <?php } ?>
+</ul>
+----
+
+=== Ou pire
+
+* Pour aller sur http://<mon_site>/mapage.php
+
+.mapage.php
+[source,php]
+----
+<?php
+session_start();
+?>
+<html>
+<body>
+...
+</body>
+</html>
+----
+
+=== Mais pourquoi ?
+
+* A l'origine, le PHP n'était fait que pour rajouter du contenu dynamique dans un page HTML.
+* Pas de point d'entrée unique
+* C'était le but (et vous étiez bien content)
+* Plus simple pour des non développeurs
+* Pas besoin de POO
+* Le plus important : PHP était fait pour générer du HTML
+
+[.notes]
+--
+On se collait à la façon de fonctionner d'apache
+Il n'y avait pas/peu de framework fullstack
+--
+
+=== Maintenant
+
+* Point d'entrée unique
+* Framework fullstack
+* Langage de template (Twig)
+* Ou simplement backend REST
+* Le langage n'est plus fait QUE pour créer du HTML
+
+=== La cas wordpress
+
+* L'irreductible
+* Communauté différente
+* C'est comme comparer les adeptes de JQuery et les aficionados d'Angular
+* Usage originel de PHP
 
 == L'OOP
 
+* "PHP, c'est pas un langage objet"
+* "C'est pas parce qu'il y a des classes que c'est de la POO"
+
+=== Héritage/Encapsulation
+
+* class/interface/abstract class
+* trait
+* final/static/etc.
+* portée des variables
+* il vous faut quoi de plus ?
+
 === Polymorphisme
 
-=== Héritage
+* Le point qui pèche
+** Pas de polymorphisme de method
 
-=== Encapsulation
+[.notes]
+--
+Si on suit le clean code, pas besoin de polymorphisme de méthode
+--
+
+=== POO avancée
+
+* Implémentable sans souci :
+
+** Clean code
+** Design pattern
+** SOLID
+** Clean architecture
+** Container d'injection de dépendances
+** etc.
+
+[.notes]
+--
+C'est plus un problème de compétence/non connaissances des patterns qui fait que ce n'est pas implémenté
+--
 
 == Les éléments de langage
 
 === Les namespaces
 
+* Organisation du code
+* Norme PSR-0/PSR-4
+
+[source,php]
+----
+<?php
+
+namespace Client\MonProjet\Controller;
+
+use Framework\Controller\AbstractContoller;
+
+class HomeController extends AbstractContoller
+{
+}
+----
+
 === L'autoloader
 
+* Fini les requires
+* sql_autoload
+* Permet de charger les classes à la volée
+* Utilise les namespaces pour trouver les classes
+* Standardisé
+
 === Les traits
+
+* Palliatif à l'héritage multiple
+* Exemple : mes controllers doivent tous pouvoir logger
+
+.LoggerTrait.php
+[source,php]
+----
+<?php
+
+trait Logger
+{
+    public function warning(): void
+    {
+        ...
+    }
+}
+----
+
+=== Usage
+
+[source,php]
+----
+<?php
+
+class MyController {
+    use Logger;
+
+    public function __construct(): void
+    {
+        $this->warning('Je suis vivant !!!');
+    }
+}
+----
 
 === Les annotations
 
