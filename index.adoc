@@ -255,6 +255,7 @@ Mettez n'importe quel langage dans les mains d'un débutant, vous aurez le même
 
 === Ou pire
 
+* L'accès direct au fichier php
 * Pour aller sur http://<mon_site>/mapage.php
 
 .mapage.php
@@ -341,6 +342,11 @@ C'est plus un problème de compétence/non connaissances des patterns qui fait q
 
 == Les éléments de langage
 
+[.notes]
+--
+Quelques éléments importants sur lesquels on me pose des questions
+--
+
 === Les namespaces
 
 * Organisation du code
@@ -361,11 +367,11 @@ class HomeController extends AbstractContoller
 
 === L'autoloader
 
-* Fini les requires
+* Fini les requires/includes etc.
 * sql_autoload
 * Permet de charger les classes à la volée
 * Utilise les namespaces pour trouver les classes
-* Standardisé
+* Standardisé (PSR-0/PSR-4)
 
 === Les traits
 
@@ -404,65 +410,150 @@ class MyController {
 
 === Les annotations
 
-[NOTE]
-====
-PHP Parser
-Doctrine
-etc.
-====
+* Comme dans tous les langages "cools" :)
+* Peut prendre la place des fichiers de conf
+* Très appréciés par Doctrine, Symfony, etc.
+
+[source,php]
+----
+/**
+ * @Route('/homepage')
+ */
+public function index(){}
+
+/**
+ * @ORM/Column('string', length=255)
+ */
+protected $name;
+
+----
 
 === Fonction anonyme
+
+* en direct ou par référence
+
+[source,php]
+----
+// Direct usage
+usort([], function ($a, $b) {
+    return $a < $b;
+});
+----
+
+[source,php]
+----
+// By ref
+$contextVar = null;
+$myFunc = function($path) use ($contextVar) {
+};
+$myFunc("path/to/directoy");
+----
 
 === Les trucs qui manquent
 
 * Enum
-* Définition des getters/setters
+* Besoin de définir les getters/setters
 * Template/Generics
 
-[NOTE]
-====
-Même si nos IDEs les générent
-====
+[.notes]
+--
+Même si nos IDEs générent les getters/setters automatiquement
+--
 
 == La qualité de code/normes
 
 === PSR
 
+* PHP Standard Recommendation
+* Naming rules
+* Règles d'organisation de code
+* Standardisation des interfaces de certaines libraries (Client HTTP, Gestion des caches, Factories, Container, etc.)
+
 === PHPQA
 
-=== PHPUnit
+* Stack d'outil de qualité de code
+* Ma dream team :
+** PHPCodeSniffer : Naming rules
+** PHPMessDetector : Complexité, bonnes pratiques
+** PHPCopyPasteDetector : tout est dans le nom
+** PHPStan : contrôle avancée du typage et sanity check
+** PHPMetrics : Métriques de conception (découplage, god object, proba de bug)
 
-=== Codeception/Behat
+* Plus pertinent que SonarQube pour le moment
+
+=== Testing
+
+* PHPUnit : Unit test
+* Behat : Test fonctionnel utilisant Gherkin
+* Codeception : Test fonctionnel
+* Connecteurs Selenium pour ces outils
 
 == L'écosystème
 
 === Composer
 
+* Gestionnaire de package de PHP
+* Embarque un autoloader PSR-0/PSR-4
+
 === Symfony
+
+* Framework fullstack
+* A révolutionner le développement en PHP
+* Mérite quelques conférences à lui tout seul
 
 === Doctrine
 
+* L'ORM de PHP par excellence
+* Configuration des entités par annotation
+* Gère les mises à jour de base de données correctement
+
 === Twig
+
+* Langage de template utilisé par Symfony
+* Templating par extension/block
+* Accès direct aux objects PHP (et par bonheur : autocomplétion dans PHPStorm)
+
+[source,twig]
+----
+{% block body %}
+{% for user in users %}
+    * {{ user.name }}
+{% else %}
+    No users have been found.
+{% endfor %}
+{% endblock %}
+----
 
 === Api Platform
 
+* Générateur d'API Rest à partir des entités PHP
+* Création automatisé du Swagger
+* Configuration par annotations
+* Option : WebUI CRUD en React
+
 === et plein d'autres trucs
+
+* Allez voir les conférences de l'AFUP
 
 == Les avantages de PHP
 
 === Stateless par défaut
 
-[NOTE]
-====
-C'est un langage de script
-On a pas la mauvaise habitude de tout foutre en session
-====
+* Langage de script donc pas de maintien de connexion
+* On a pas la mauvaise habitude de tout foutre en session
 
 === Build/Déploiement simple
 
+* Build = installation des dépendances
+* ... c'est à peu près tout
+* On ne fait que déposer des fichiers dans un répertoire
+
 === Accessible au débutant
 
-=== Simple par définition
+* On arrive rapidement à faire quelques choses
+* Pas besoin de compétence en POO
+* Modification en prod directement
+* Simple par définition
 
 == Conclusion
 
