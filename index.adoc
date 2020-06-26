@@ -15,11 +15,13 @@
 
 image::images/annoyed.jpg[Annoyed,100%,100%]
 
-== Présence de PHP sur la toile
+== Alors que ...
 
 * 80% du web
 * Wordpress = 25% du web
 * Taux de pénétration de 57% dans les entreprises (source wikipedia, désolé)
+
+image::images/phpeverywhere.jpg[]
 
 [.notes]
 --
@@ -32,19 +34,11 @@ Et pourtant j'aime pas Wordpress
 Quoi que vous puissiez dire, PHP c'est 80%
 --
 
-== Le menu du jour
-
-* Retour sur l'histoire de PHP
-* Le langage
-* La POO
-* La stabilité
-* Normes et code quality
-* L'écosystème
-* Les avantages du langage
-
 == Reprenons depuis le début
 
 L'histoire de PHP
+
+image::images/arton5907.jpg[archeo]
 
 === 1994 : PHP/FI
 
@@ -150,6 +144,8 @@ On verra des exemples tout à l'heure ne vous inquietez pas, mais je demanderai 
 * On va en parler ...
 * ... mais juste, c'est plus rapide que Python
 
+image::images/mr-bean.jpg[]
+
 [.notes]
 --
 PHP6 c'est gauffré, une sombre histoire d'unicode
@@ -253,6 +249,8 @@ Il n'y avait pas/peu de framework fullstack
 * Usage originel de PHP
 
 == Le langage
+
+image::images/590300.jpg[]
 
 [.notes]
 --
@@ -416,12 +414,18 @@ $myFunc("path/to/directoy");
 * Besoin de définir les getters/setters
 * Template/Generics
 
+image::images/cry.jpg[cry,30%]
+
 [.notes]
 --
 Même si nos IDEs générent les getters/setters automatiquement
 --
 
 == La stabilité
+
+
+
+=== Ce que j'entend
 
 * PHP, c'est pas stable !
 * Ca marche mal
