@@ -1,4 +1,5 @@
 = De PHP Moche à aujourd'hui
+:source-highlighter: highlightjs
 
 == Pourquoi cette présentation ?
 
@@ -10,9 +11,13 @@
 * Vous faites des tests en vrai ?
 * Etc.
 
-=== Image ça m'agace
+=== ...
 
-== L'histoire de PHP
+image::images/annoyed.jpg[Annoyed,100%,100%]
+
+== Reprenons depuis le début
+
+L'histoire de PHP
 
 === 1994 : PHP/FI
 
@@ -103,7 +108,7 @@ On verra des exemples tout à l'heure ne vous inquietez pas, mais je demanderai 
 
 === 2004 : PHP 5
 
-* Zend Engines 2.0
+* Zend Engine 2.0
 * Arrivée de l'objet
 * Explosion de la communauté
 ** PEAR/PECL
@@ -124,14 +129,23 @@ PHP6 c'est gauffré, une sombre histoire d'unicode
 Je ne vais pas épiloguer
 --
 
+=== 2020 : PHP 8
+
+* Encore en beta à l'heure actuelle
+* De jolies promesses
+
 == Présence de PHP sur la toile
 
-* 80% d'internet
-* Wordpress = 25% d'internet
-* Taux de pénétration de 57% (source wikipedia, désolé)
+* 80% du web
+* Wordpress = 25% du web
+* Taux de pénétration de 57% dans les entreprises (source wikipedia, désolé)
 
 [.notes]
 --
+Enfin en 2010, PHP est le langage dont les logiciels open source sont les plus utilisés dans les entreprises, avec 57 % de taux de pénétration.
+
+http://news.cnet.com/8301-13505_3-10453213-16.html
+
 Punchlines :
 Et pourtant j'aime pas Wordpress
 Quoi que vous puissiez dire, PHP c'est 80%
@@ -154,6 +168,8 @@ Quoi que vous puissiez dire, PHP c'est 80%
 </body>
 ----
 
+C'est pas très beau hein ?
+
 [.notes]
 --
 Oui, ça ressemblait à ça avant
@@ -162,82 +178,6 @@ Punchlines :
 * Wordpress ressemble toujours un peu à ça
 * Au moins c'était efficace
 * J'ai pas testé le code, trop de faille de sécu
---
-
-== Le typage
-
-Ce que vous connaissez
-
-[source,php]
-----
-<?php
-
-function test($toto = null) {
-    return $toto;
-}
-----
-
-[.notes]
---
-
-* PHP 4 : le typage n'avait aucun sens
-* PHP 5 : Possible dans les paramètres et encore que des classes
---
-
-=== Maintenant
-
-[source,php]
-----
-<?php
-
-declare(strict_types = 1);
-
-class ILovePHP
-{
-    private string $myVar;
-
-    protected function test(MonInterface? $toto): void
-    {
-        echo 'Ca change hein ?';
-    }
-}
-----
-
-* Typage fort possible et complet
-
-[.notes]
---
-strict_types définissable dans la conf de base
-Depuis 7.4, on peut tout typer
-On peut toujours travailler sans si on le souhaite
-Les scalaires sont supportés
---
-
-== La stabilité
-
-* PHP, c'est pas stable !
-* Ca marche mal
-* C'est lent ...
-* C'est un langage de Schrodinger
-
-[.notes]
---
-Pour les anciens, oui, PHP, ce n'était pas stable
---
-
-=== Les vraies raisons
-
-* display_errors : false
-* Pas de compilation
-* Langage permissif
-* Communauté vaste, pas forcement formée
-* ... comme pas mal de langage récent en fait
-
-[.notes]
---
-On va aller vite, c'est généralement un problème de typage.
-
-Mettez n'importe quel langage dans les mains d'un débutant, vous aurez le même résultat.
 --
 
 == Le PHP dans les fichiers HTML
@@ -301,50 +241,60 @@ Il n'y avait pas/peu de framework fullstack
 * C'est comme comparer les adeptes de JQuery et les aficionados d'Angular
 * Usage originel de PHP
 
-== L'OOP
-
-* "PHP, c'est pas un langage objet"
-* "C'est pas parce qu'il y a des classes que c'est de la POO"
-
-=== Héritage/Encapsulation
-
-* class/interface/abstract class
-* trait
-* final/static/etc.
-* portée des variables
-* il vous faut quoi de plus ?
-
-=== Polymorphisme
-
-* Le point qui pèche
-** Pas de polymorphisme de method
-
-[.notes]
---
-Si on suit le clean code, pas besoin de polymorphisme de méthode
---
-
-=== POO avancée
-
-* Implémentable sans souci :
-
-** Clean code
-** Design pattern
-** SOLID
-** Clean architecture
-** Container d'injection de dépendances
-** etc.
-
-[.notes]
---
-C'est plus un problème de compétence/non connaissances des patterns qui fait que ce n'est pas implémenté
---
-
-== Les éléments de langage
+== Le langage
 
 [.notes]
 --
 Quelques éléments importants sur lesquels on me pose des questions
+--
+
+=== Le typage
+
+Ce que vous connaissez
+
+[source,php]
+----
+<?php
+
+function test($toto = null) {
+    return $toto;
+}
+----
+
+[.notes]
+--
+
+* PHP 4 : le typage n'avait aucun sens
+* PHP 5 : Possible dans les paramètres et encore que des classes
+--
+
+=== Maintenant
+
+[source,php]
+----
+<?php
+
+declare(strict_types = 1);
+
+class ILovePHP
+{
+    private string $myVar;
+
+    protected function test(MonInterface? $toto): void
+    {
+        echo 'Ca change hein ?';
+    }
+}
+----
+
+* Typage fort possible et complet
+
+[.notes]
+--
+strict_types définissable dans la conf de base
+Depuis 7.4, on peut tout typer
+On peut toujours travailler sans si on le souhaite
+Les scalaires sont supportés
 --
 
 === Les namespaces
@@ -368,7 +318,7 @@ class HomeController extends AbstractContoller
 === L'autoloader
 
 * Fini les requires/includes etc.
-* sql_autoload
+* spl_autoload
 * Permet de charger les classes à la volée
 * Utilise les namespaces pour trouver les classes
 * Standardisé (PSR-0/PSR-4)
@@ -458,6 +408,73 @@ $myFunc("path/to/directoy");
 [.notes]
 --
 Même si nos IDEs générent les getters/setters automatiquement
+--
+
+== La stabilité
+
+* PHP, c'est pas stable !
+* Ca marche mal
+* C'est lent ...
+* C'est un langage de Schrodinger
+
+[.notes]
+--
+Pour les anciens, oui, PHP, ce n'était pas stable
+--
+
+=== Les vraies raisons
+
+* display_errors : false
+* Pas de compilation
+* Langage permissif
+* Communauté vaste, pas forcement formée
+* ... comme pas mal de langage récent en fait
+
+[.notes]
+--
+On va aller vite, c'est généralement un problème de typage.
+
+Mettez n'importe quel langage dans les mains d'un débutant, vous aurez le même résultat.
+--
+
+
+== L'OOP
+
+* "PHP, c'est pas un langage objet"
+* "C'est pas parce qu'il y a des classes que c'est de la POO"
+
+=== Héritage/Encapsulation
+
+* class/interface/abstract class
+* trait
+* final/static/etc.
+* portée des variables
+* il vous faut quoi de plus ?
+
+=== Polymorphisme
+
+* Le point qui pèche
+** Pas de polymorphisme de method
+
+[.notes]
+--
+Si on suit le clean code, pas besoin de polymorphisme de méthode
+--
+
+=== POO avancée
+
+* Implémentable sans souci :
+
+** Clean code
+** Design pattern
+** SOLID
+** Clean architecture
+** Container d'injection de dépendances
+** etc.
+
+[.notes]
+--
+C'est plus un problème de compétence/non connaissances des patterns qui fait que ce n'est pas implémenté
 --
 
 == La qualité de code/normes
