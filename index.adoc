@@ -15,6 +15,33 @@
 
 image::images/annoyed.jpg[Annoyed,100%,100%]
 
+== Présence de PHP sur la toile
+
+* 80% du web
+* Wordpress = 25% du web
+* Taux de pénétration de 57% dans les entreprises (source wikipedia, désolé)
+
+[.notes]
+--
+Enfin en 2010, PHP est le langage dont les logiciels open source sont les plus utilisés dans les entreprises, avec 57 % de taux de pénétration.
+
+http://news.cnet.com/8301-13505_3-10453213-16.html
+
+Punchlines :
+Et pourtant j'aime pas Wordpress
+Quoi que vous puissiez dire, PHP c'est 80%
+--
+
+== Le menu du jour
+
+* Retour sur l'histoire de PHP
+* Le langage
+* La POO
+* La stabilité
+* Normes et code quality
+* L'écosystème
+* Les avantages du langage
+
 == Reprenons depuis le début
 
 L'histoire de PHP
@@ -134,22 +161,6 @@ Je ne vais pas épiloguer
 * Encore en beta à l'heure actuelle
 * De jolies promesses
 
-== Présence de PHP sur la toile
-
-* 80% du web
-* Wordpress = 25% du web
-* Taux de pénétration de 57% dans les entreprises (source wikipedia, désolé)
-
-[.notes]
---
-Enfin en 2010, PHP est le langage dont les logiciels open source sont les plus utilisés dans les entreprises, avec 57 % de taux de pénétration.
-
-http://news.cnet.com/8301-13505_3-10453213-16.html
-
-Punchlines :
-Et pourtant j'aime pas Wordpress
-Quoi que vous puissiez dire, PHP c'est 80%
---
 
 == Cassons un peu les à priori
 
