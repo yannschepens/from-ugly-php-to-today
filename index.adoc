@@ -530,7 +530,7 @@ C'est plus un problème de compétence/non connaissances des patterns qui fait q
 === Symfony
 
 * Framework fullstack
-* A révolutionner le développement en PHP
+* A révolutionné le développement en PHP
 * Mérite quelques conférences à lui tout seul
 
 === Doctrine
